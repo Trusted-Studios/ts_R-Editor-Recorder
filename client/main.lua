@@ -17,31 +17,31 @@ Recorder = {
 }
 
 function Recorder:Main()
-    if Config.KeyBind.enable then
-        if IsControlJustPressed(0, Config.KeyBind.key) and GetLastInputMethod(0) then
-            if self.IsRecording then
+    if Config.KeyBind.enable then 
+        if IsControlJustPressed(0, Config.KeyBind.key) and GetLastInputMethod(0) then 
+            if self.IsRecording then 
                 StopRecordingAndSaveClip()
                 self.IsRecording = false
-            else
+            else 
                 StartRecording(1)
                 self.IsRecording = true
             end
         end
-    end
-end
+    end 
+end 
 
 RegisterCommand(Config.Command, function(source)
-    if Config.Command.enable then
-        if Recorder.IsRecording then
+    if Config.Command.enable then 
+        if self.IsRecording then 
             StopRecordingAndSaveClip()
-            Recorder.IsRecording = false
-        else
+            self.IsRecording = false
+        else 
             StartRecording(1)
-            Recorder.IsRecording = true
+            self.IsRecording = true
         end
-    else
+    else 
         print("Command is diesabled!")
-    end
+    end 
 end)
 
 Citizen.CreateThread(function()
