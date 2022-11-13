@@ -1,0 +1,10 @@
+{
+    "Lua.diagnostics.disable": [
+        "unused-local",
+        "param-type-mismatch",
+        "missing-parameter"
+    ],
+    "Lua.diagnostics.globals": [
+        "self"
+    ]
+}
