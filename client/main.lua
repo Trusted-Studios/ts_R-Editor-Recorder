@@ -32,12 +32,12 @@ end
 
 RegisterCommand(Config.Command, function(source)
     if Config.Command.enable then 
-        if self.IsRecording then 
+        if Recorder.IsRecording then 
             StopRecordingAndSaveClip()
-            self.IsRecording = false
+            Recorder.IsRecording = false
         else 
             StartRecording(1)
-            self.IsRecording = true
+            Recorder.IsRecording = true
         end
     else 
         print("Command is diesabled!")
