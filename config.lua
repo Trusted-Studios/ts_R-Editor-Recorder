@@ -14,12 +14,6 @@ print("^6[SHARED - DEBUG] ^0: "..filename()..".lua gestartet");
 
 Config = {}
 
-Config.KeyBind = {
-    enable = true, 
-    key = 170,
-}
+Config.KeyBind = "F3"
 
-Config.Command = {
-    enable = true,
-    command = "record",
-}
+Config.Command = "record"

@@ -1,3 +1,3 @@
-# esx_GMW-Recorder
+# ts_R-Editor-Recorder
 
-Eine einfache Ressource um die ingame Aufnahmen starten / stoppen zu können. Keybinds und Command können in der Config eingestellt werden. 
+A simple Script allowing players to record Clips with the R* Editor.

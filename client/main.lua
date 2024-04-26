@@ -13,40 +13,32 @@ print("^6[CLIENT - DEBUG] ^0: "..filename()..".lua gestartet");
 -- ════════════════════════════════════════════════════════════════════════════════════ --
 
 Recorder = {
-    IsRecording = false,
+    isRecording = false,
 }
 
-function Recorder:Main()
-    if Config.KeyBind.enable then 
-        if IsControlJustPressed(0, Config.KeyBind.key) and GetLastInputMethod(0) then 
-            if self.IsRecording then 
-                StopRecordingAndSaveClip()
-                self.IsRecording = false
-            else 
-                StartRecording(1)
-                self.IsRecording = true
-            end
-        end
-    end 
-end 
+if Config.KeyBind then
+    RegisterKeyMapping('Trusted:Record', 'Start / Stop a R* Editor Recording.', 'keyboard', Config.KeyBind)
 
-RegisterCommand(Config.Command, function(source)
-    if Config.Command.enable then 
-        if Recorder.IsRecording then 
-            StopRecordingAndSaveClip()
-            Recorder.IsRecording = false
-        else 
-            StartRecording(1)
-            Recorder.IsRecording = true
-        end
-    else 
-        print("Command is diesabled!")
-    end 
-end)
+    RegisterCommand('Trusted:Record', function()
+        Recorder:Handle()
+    end, false)
+end
 
-Citizen.CreateThread(function()
-    while true do
-        Citizen.Wait(0)
-        Recorder:Main()
+if Config.Command then
+    RegisterCommand(Config.Command, function()
+        Recorder:Handle()
+    end, false)
+end
+
+function Recorder:Handle()
+    if self.isRecording then
+        StopRecordingAndSaveClip()
     end
-end)
+
+    if not self.isRecording then
+        StartRecording(1)
+    end
+
+    self.IsRecording = not self.IsRecording
+end
+
