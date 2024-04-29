@@ -39,6 +39,6 @@ function Recorder:Handle()
         StartRecording(1)
     end
 
-    self.IsRecording = not self.IsRecording
+    self.isRecording = not self.isRecording
 end
 
