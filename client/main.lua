@@ -42,3 +42,12 @@ function Recorder:Handle()
     self.isRecording = not self.isRecording
 end
 
+if Config.RockstarEditor.enable then
+    if Recorder.isRecording then
+        StopRecordingAndSaveClip()
+    end
+
+    RegisterCommand(Config.RockstarEditor.Command, function()
+        ActivateRockstarEditor()
+    end, false)
+end

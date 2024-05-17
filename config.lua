@@ -14,6 +14,11 @@ print("^6[SHARED - DEBUG] ^0: "..filename()..".lua gestartet");
 
 Config = {}
 
-Config.KeyBind = "F3"
+Config.KeyBind = "F11"
 
 Config.Command = "record"
+
+Config.RockstarEditor = {
+    enable = true,
+    Command = "enterEditor"
+}
